@@ -19,6 +19,7 @@ public class FilesReaderMain {
     	
     	FileReader file = new FileReader("C:/Users/natha/Desktop/test.txt");
     	file.lire();
+    	file.lireSensInverse();
     }
     
 }
