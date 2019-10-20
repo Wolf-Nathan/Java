@@ -16,6 +16,9 @@ public class FilesReaderMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+    	
+    	FileReader file = new FileReader("C:/Users/natha/Desktop/test.txt");
+    	file.lire();
     }
     
 }

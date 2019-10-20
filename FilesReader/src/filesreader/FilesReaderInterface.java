@@ -10,7 +10,7 @@ package filesreader;
  * @author licence
  */
 public interface FilesReaderInterface {
-    Object lire();
+    public void lire();
     
     
 }
