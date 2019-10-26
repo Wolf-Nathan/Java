@@ -59,7 +59,15 @@ public class FileReader extends FilesReaderAbstract implements FilesReaderInterf
     }
     
     public void lecturePalyndromique() {
-    	ArrayList<String> reverse = new ArrayList<String>();
+    	System.out.println("Lecture palyndromique");
+    	for(int i = this.contenu.size()-1; i>=0; i-- ) {
+    		//Pour séparer les lignes du fichier
+    		System.out.println();
+    		for(int j = this.contenu.get(i).length()-1; j>=0; j--) {
+    			//On récupère le contenu du fichier mais en caractère par caractère plûtot que ligne par ligne et en sens inverse
+    			System.out.print(Character.toString(this.contenu.get(i).charAt(j)));
+    		}
+    	}
     }
 	
 }
