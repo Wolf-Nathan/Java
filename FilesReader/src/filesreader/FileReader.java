@@ -19,27 +19,12 @@ public class FileReader extends FilesReaderAbstract implements FilesReaderInterf
     public FileReader(String nomFichier) {
     	this.file = new File(nomFichier);
     	this.contenu = new ArrayList<String>();
+    	this.initializeContenu();
     	
     }
     
-    public void lire() {
-    	try {
-    		InputStream a = new FileInputStream(this.file);
-    		InputStreamReader lecture = new InputStreamReader(a);
-    		BufferedReader buff = new BufferedReader(lecture);
-    		String ligne;
-    		System.out.println("Contenu du fichier : ");
-    		while((ligne=buff.readLine())!=null) {
-    			System.out.println(ligne);
-    		}
-    		buff.close();
-    	}
-    	catch(Exception e) {
-    		System.out.println(e.toString());
-    	}
-    }
-    
-    public void lireSensInverse() {
+    //Fonction qui récupère le contenu du fichier et instancie un ArrayList contenant chaque ligne
+    public void initializeContenu() {
     	try {
     		InputStream a = new FileInputStream(this.file);
     		InputStreamReader lecture = new InputStreamReader(a);
@@ -49,36 +34,32 @@ public class FileReader extends FilesReaderAbstract implements FilesReaderInterf
     			this.contenu.add(ligne);
     		}
     		buff.close();
-    		System.out.println("Contenu du fichier à l'envers :");
-    		int i = this.contenu.size() - 1;
-    		while(i>=0) {
-    			System.out.println(this.contenu.get(i));
-    			i--;
-    		}
     	}
-    	catch(Exception e) {
+    	catch(Exception e){
     		System.out.println(e.toString());
     	}
     }
+    
+    public void lire() {
+    	int i = 0;
+    	System.out.println("Contenu du fichier");
+    	while(i<this.contenu.size()) {
+    		System.out.println(this.contenu.get(i));
+    		i++;
+    	}
+    }
+    
+    public void lireSensInverse() {
+    	int i = this.contenu.size()-1;
+    	System.out.println("Contenu du fichier à l'envers");
+    	while(i>=0) {
+    		System.out.println(this.contenu.get(i));
+    		i--;
+    	}
+    }
+    
+    public void lecturePalyndromique() {
+    	ArrayList<String> reverse = new ArrayList<String>();
+    }
 	
-	/*private String fileName;
-    
-    public FileReader(String name){
-        this.fileName = name;
-    }
-    
-    public FileReader(){
-        this.fileName = "";
-    }
-    
-    public String getFileName(){
-        return this.fileName;
-    }
-
-    public void setFileName(String name){
-        this.fileName = name;
-    }*/
-    
-    
-    
 }

@@ -11,6 +11,9 @@ package filesreader;
  */
 public interface FilesReaderInterface {
     public void lire();
+    public void initializeContenu();
+    public void lireSensInverse();
+    public void lecturePalyndromique();
     
     
 }
