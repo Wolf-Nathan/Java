@@ -61,13 +61,43 @@ public class FileReader extends FilesReaderAbstract implements FilesReaderInterf
     public void lecturePalyndromique() {
     	System.out.println("Lecture palyndromique");
     	for(int i = this.contenu.size()-1; i>=0; i-- ) {
-    		//Pour séparer les lignes du fichier
-    		System.out.println();
     		for(int j = this.contenu.get(i).length()-1; j>=0; j--) {
     			//On récupère le contenu du fichier mais en caractère par caractère plûtot que ligne par ligne et en sens inverse
     			System.out.print(Character.toString(this.contenu.get(i).charAt(j)));
     		}
+    		//Pour séparer les lignes du fichier
+    		System.out.println();
     	}
+    }
+    
+    public void diff(FileReader autreFichier) {
+    	System.out.println("Comparaison des fichiers");
+    	if(this.contenu.equals(autreFichier.getContenu())) {
+    		System.out.println("Les fichiers sont identiques !");
+    	}
+    	else {
+    		System.out.println("Les fichiers ne sont pas identiques :/");
+    		if(this.contenu.size()<autreFichier.getContenu().size()) {
+    			for(int i=0; i<this.contenu.size(); i++) {
+    				if(!this.contenu.get(i).equals(autreFichier.getContenu().get(i))){
+    					System.out.println("Les fichiers sont différents à la ligne "+ i);
+    				}
+    			}
+    		}
+    		else {
+    			for(int i=0; i<autreFichier.getContenu().size(); i++) {
+    				if(!this.contenu.get(i).equals(autreFichier.getContenu().get(i))){
+    					int ligne = i+1;
+    					System.out.println("Les fichiers sont différents à la ligne "+ ligne);
+    				}
+    			}
+    		}
+    	}
+    	
+    }
+    
+    public ArrayList<String> getContenu() {
+    	return this.contenu;
     }
 	
 }

@@ -5,6 +5,8 @@
  */
 package filesreader;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author licence
@@ -14,6 +16,8 @@ public interface FilesReaderInterface {
     public void initializeContenu();
     public void lireSensInverse();
     public void lecturePalyndromique();
+    public void diff(FileReader autreFichier);
+    public ArrayList<String> getContenu();
     
     
 }

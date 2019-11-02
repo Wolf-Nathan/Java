@@ -21,6 +21,8 @@ public class FilesReaderMain {
     	file.lire();
     	file.lireSensInverse();
     	file.lecturePalyndromique();
+    	FileReader file2 = new FileReader("C:/Users/natha/Desktop/test2.txt");
+    	file.diff(file2);
     }
     
 }
