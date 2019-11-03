@@ -14,12 +14,46 @@ public class RobotPeureux extends Robot {
 		this.y = r.getY();
 	}
 	
-	public void look() {
-		
+	public boolean look(Robot map[][], int x, int y) {
+		//Pas de robot à cette case et la case ne dépasse pas les limites de la map
+		if(x>=0 && x<=10 && y>=0 && y<=15 && map[x][y]==null) {
+			//Le robot étant peureux il faut vérifier qu'aucun autre robot ne se situe à côté de la nouvelle case
+			if(map[x-1][y-1]==null && map[x-1][y]==null && map[x-1][y+1]==null && map[x][y-1]==null && map[x][y]==null && map[x][y+1]==null && map[x+1][y-1]==null && map[x+1][y]==null && map[x+1][y+1]==null ) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
-	public void move() {
-		
+	public void move(Robot map[][]) {
+		int newX = 0;
+		int newY = 0;
+		do {
+			double a = Math.random();
+			double b = Math.random();
+			if(a<=0.33) {
+				newX = this.x - 1;
+			}
+			else if(a>0.33 && a<=0.66) {
+				newX = this.x;
+			}
+			else {
+				newX = this.x + 1;
+			}
+			if(b<=0.33) {
+				newY = this.y - 1;
+			}
+			else if(b>0.33 && b<=0.66 ) {
+				newY = this.y;
+			}
+			else {
+				newY = this.y + 1;
+			}
+		}while(!this.look(map, newX, newY));
+		map[this.x][this.y] = null;
+		this.x = newX;
+		this.y = newY;
+		map[newX][newY] = this;
 	}
 	
 	public void action() {
