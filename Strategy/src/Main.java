@@ -13,6 +13,15 @@ public class Main {
 		joyeux = new RobotPeureux(joyeux);
 		map[2][6] = joyeux;
 		System.out.println(map[2][6]);
+		System.out.println(8<10 && 15<15 && map[10][16]==null);
+		joyeux = new RobotNeutre(joyeux);
+		map[2][6] = joyeux;
+		System.out.println(map[2][6]);
+		joyeux.move(map);
+		System.out.println(joyeux.getX());
+		System.out.println(joyeux.getY());
+		System.out.println(map[2][6]);
+		System.out.println(map[joyeux.getX()][joyeux.getY()]);
 	}
 
 }

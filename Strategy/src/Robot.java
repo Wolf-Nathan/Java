@@ -1,16 +1,38 @@
+import java.math.*;
 
-public abstract class Robot implements RobotInterface {
+
+public class Robot implements RobotInterface {
 	public int vie;
 	public int x;
 	public int y;
 	
-	public abstract void look();
-	public abstract void move();
-	public abstract void action();
-	public abstract int getX();
-	public abstract int getY();
-	public abstract void setX(int x);
-	public abstract void setY(int y);
-	public abstract int getVie();
+	public void look() {
+		
+	}
+	public void move() {
+		
+	}
+	public void action() {
+		
+	}
+	public int getX() {
+		return this.x;
+	}
+	public int getY() {
+		return this.y;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	public int getVie() {
+		return this.vie;
+	}
+	
+	public void move(Robot map[][]) {
+		
+	}
 
 }
