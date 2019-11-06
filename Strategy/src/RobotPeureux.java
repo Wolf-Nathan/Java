@@ -1,26 +1,24 @@
 
 public class RobotPeureux extends Robot {
 	
-	public RobotPeureux(int x, int y) {
+	public RobotPeureux(int x, int y, String name) {
 		this.vie = 70;
-		this.x =x;
+		this.x = x;
 		this.y = y;
-		
+		this.name = name;
 	}
 	
 	public RobotPeureux(Robot r) {
 		this.vie = r.getVie();
 		this.x = r.getX();
 		this.y = r.getY();
+		this.name = r.getName();
 	}
 	
 	public boolean look(Robot map[][], int x, int y) {
-		//Pas de robot à cette case et la case ne dépasse pas les limites de la map
-		if(x>=0 && x<=10 && y>=0 && y<=15 && map[x][y]==null) {
-			//Le robot étant peureux il faut vérifier qu'aucun autre robot ne se situe à côté de la nouvelle case
-			if(map[x-1][y-1]==null && map[x-1][y]==null && map[x-1][y+1]==null && map[x][y-1]==null && map[x][y]==null && map[x][y+1]==null && map[x+1][y-1]==null && map[x+1][y]==null && map[x+1][y+1]==null ) {
-				return true;
-			}
+		//Pas de robot à cette case (robot peureux) et la case ne dépasse pas les limites de la map
+		if(x>=0 && x<10 && y>=0 && y<15 && map[x][y]==null) {
+			return true;
 		}
 		return false;
 	}
@@ -60,7 +58,11 @@ public class RobotPeureux extends Robot {
 		
 	}
 	
-	public void fuir() {
-		
+	public String toString() {
+		return this.name + " est un robot peureux avec " + this.vie + " point de santé et est situé aux coordonnées " + this.x + "/" + this.y; 
+	}
+	
+	public void makeATurn(Robot map[][]) {
+		this.move(map);
 	}
 }
