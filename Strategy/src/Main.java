@@ -22,6 +22,19 @@ public class Main {
 		System.out.println(joyeux.getY());
 		System.out.println(map[2][6]);
 		System.out.println(map[joyeux.getX()][joyeux.getY()]);
+		
+		System.out.println("Affichage de la map");
+		for(int i=0; i<10; i++) {
+			for(int j=0; j<15; j++) {
+				if(!(map[i][j]==null)) {
+					System.out.print("[R]");
+				}
+				else {
+					System.out.print("[-]");
+				}
+			}
+			System.out.println();
+		}
 	}
 
 }
