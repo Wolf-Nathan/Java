@@ -19,7 +19,7 @@ public abstract class Personnage {
 	}
 	
 	public String toString() {
-		String str = this.getClass() + " a " + this.vie + " points de vie et " + this.force + " points de force";
+		String str = this.getClass() + " a " + this.vie + " points de vie, " + this.force + " points de force et possède " + this.arme;
 		return str;
 	}
 	
@@ -53,5 +53,18 @@ public abstract class Personnage {
 	
 	public void setArgent(int argent) {
 		this.argent = argent;
+	}
+	
+	public void attaque(Personnage ennemi) {
+		System.out.println(this + " attaque " + ennemi);
+		int coup = this.force + this.arme.getDegat();
+		ennemi.defend(coup);
+	}
+	
+	public void defend(int coup) {
+		this.vie = this.vie - coup;
+		if(this.vie < 0) {
+			System.out.println(this + " est mort !");
+		}
 	}
 }

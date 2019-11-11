@@ -2,7 +2,9 @@
 public class Archer extends Personnage{
 	
 	public Archer() {
-		super();
+		super(60, null, 40);
+		Arme arc = new Arc();
+		this.arme = arc;
 	}
 
 }

@@ -7,11 +7,13 @@ public abstract class Arme {
 	public Arme() {
 		this.degat = 15;
 		this.portee = 1;
+		this.prix = 0;
 	}
 	
-	public Arme(int degat, int portee) {
+	public Arme(int degat, int portee, int prix) {
 		this.degat = degat;
 		this.portee = portee; 
+		this.prix = prix;
 	}
 	
 	public int getDegat() {
@@ -36,6 +38,10 @@ public abstract class Arme {
 	
 	public void setPrix(int prix) {
 		this.prix = prix;
+	}
+	
+	public String toString() {
+		return "Arme";
 	}
 
 }
