@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Card> pokedeck = new ArrayList<Card>();
-		Scanner sc = new Scanner(System.in);
+		/*Scanner sc = new Scanner(System.in);
 		System.out.println("Souhaitez-vous ajouter une carte ? (o/n)");
 		String choice = sc.next();
 		if(choice.equals("o")) {
@@ -39,7 +39,7 @@ public class Main {
 				System.out.println("Voulez-vous supprimer une autre carte ?");
 				choice = sc.next();
 			}while(choice.equals("o"));
-		}
+		}*/
 		Menu menu = new Menu(pokedeck);
 		
 	}
