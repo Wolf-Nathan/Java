@@ -32,10 +32,11 @@ public class Menu extends JFrame{
 	class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if(((JButton) e.getSource()).getText()=="New Card") {
-	            Card c = new Card("Pikachu", "Le pokémon soyeux");
-	            System.out.println(c);
 	            AddCard addCard = new AddCard(pokedeck);
 	        }
+			else if(((JButton) e.getSource()).getText()=="Remove Card") {
+				RemoveCard removeCard = new RemoveCard(pokedeck);
+			}
 	        else {
 	            System.out.println(((JButton) e.getSource()).getText());
 	        }

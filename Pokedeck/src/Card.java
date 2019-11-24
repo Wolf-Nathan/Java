@@ -20,6 +20,14 @@ public class Card {
 		this.description = txt;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public String toString() {
 		return this.name +" "+ this.description;
 	}
