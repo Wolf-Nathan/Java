@@ -2,14 +2,16 @@
 public class Card {
 	private String name;
 	private String description;
+	private int id;
 	
 	public Card() {
 		
 	}
 	
-	public Card(String name, String description) {
+	public Card(String name, String description, int id) {
 		this.name = name;
 		this.description = description;
+		this.id =id;
 	}
 	
 	public String getDescription() {
@@ -29,7 +31,15 @@ public class Card {
 	}
 	
 	public String toString() {
-		return this.name +" "+ this.description;
+		return this.name +" "+ this.description + " ID :" + this.id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getID() {
+		return this.id;
 	}
 
 }

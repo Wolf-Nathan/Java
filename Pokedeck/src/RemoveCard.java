@@ -21,7 +21,7 @@ public class RemoveCard extends Menu {
 		for(int i=0; i<this.pokedeck.size(); i++) {
 			Card c = this.pokedeck.get(i);
 			JLabel cardName = new JLabel(c.getName());
-			JButton but = new JButton("Remove");
+			JButton but = new JButton("Remove "+ c.getName());
 			but.addActionListener(new ButtonListener());
 			cardName.setSize(100, 30);
 			but.setSize(100, 30);
@@ -39,6 +39,11 @@ public class RemoveCard extends Menu {
 	class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
+			String buttonName = ((JButton)e.getSource()).getText();
+			String del = "Remove ";
+			String name = buttonName.replace(del, "");
+			System.out.println(name);
+			pokedeck.remove(name);
 			
 		}
 	}

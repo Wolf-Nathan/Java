@@ -6,6 +6,7 @@ public class AddCard extends Menu {
 
 	private JTextField nameText = new JTextField("Card name");
 	private JTextField descriptionText = new JTextField("Card description");
+	private JTextField idText = new JTextField("Card ID");
 	
 	public AddCard() {}
 	
@@ -17,6 +18,7 @@ public class AddCard extends Menu {
 		this.setLocationRelativeTo(null);
 		this.panel.add(this.nameText);
 		this.panel.add(this.descriptionText);
+		this.panel.add(this.idText);
 		JButton but = new JButton("Add this card");
 		but.addActionListener(new ButtonListener());
 		this.panel.add(but);
@@ -29,10 +31,16 @@ public class AddCard extends Menu {
 		public void actionPerformed(ActionEvent e) {
 			String name = nameText.getText();
 			String description = descriptionText.getText();
-			Card c = new Card(name, description);
-			System.out.println(c);
-			pokedeck.add(c);
-			System.out.println(pokedeck);
+			int id = Integer.parseInt(idText.getText());
+			Card c = new Card(name, description, id);
+			if(pokedeck.size()>id && pokedeck.get(id) != null) {
+				
+			}
+			else {
+				System.out.println(c);
+				pokedeck.add(id, c);
+				System.out.println(pokedeck);
+			}
 		}
 	}
 	
