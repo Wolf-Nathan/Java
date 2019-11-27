@@ -43,6 +43,14 @@ public class RemoveCard extends Menu {
 			String del = "Remove ";
 			String name = buttonName.replace(del, "");
 			System.out.println(name);
+			for(int i = 0; i<pokedeck.size(); i++) {
+				Card c = pokedeck.get(i);
+				if(c.getName().contentEquals(name)) {
+					pokedeck.remove(i);
+					break;
+				}
+				System.out.println(pokedeck);
+			}
 			pokedeck.remove(name);
 			
 		}

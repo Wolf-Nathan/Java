@@ -8,6 +8,11 @@ public class Card {
 		
 	}
 	
+	public Card(String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
+	
 	public Card(String name, String description, int id) {
 		this.name = name;
 		this.description = description;

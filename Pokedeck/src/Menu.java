@@ -37,6 +37,9 @@ public class Menu extends JFrame{
 			else if(((JButton) e.getSource()).getText()=="Remove Card") {
 				RemoveCard removeCard = new RemoveCard(pokedeck);
 			}
+			else if(((JButton) e.getSource()).getText()=="Edit Card") {
+				MenuEditCard menuEditCard = new MenuEditCard(pokedeck);
+			}
 	        else {
 	            System.out.println(((JButton) e.getSource()).getText());
 	        }
