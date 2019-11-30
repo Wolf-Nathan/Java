@@ -14,6 +14,7 @@ public class MenuEditCard extends Menu {
 		this.panel = new JPanel();
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("Edit Card");
+		this.setSize(240, 300);
 		for(int i=0; i<this.pokedeck.size(); i++) {
 			Card c = this.pokedeck.get(i);
 			//JLabel cardName = new JLabel(c.getName());
@@ -40,7 +41,8 @@ public class MenuEditCard extends Menu {
 			String name = buttonName.replace(del, "");
 			System.out.println(name);
 			EditCard editCard = new EditCard(pokedeck, name);
-			
+			setVisible(false);
+			dispose();
 			
 		}
 	}

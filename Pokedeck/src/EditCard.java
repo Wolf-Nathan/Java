@@ -4,9 +4,9 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class EditCard extends Menu {
-	private JTextField nameText;
+	private JTextField nameText = new JTextField();
 	private JButton but = new JButton("Save");
-	private JTextField descriptionText;
+	private JTextField descriptionText = new JTextField();
 	private String cardName;
 	
 	public EditCard() {}
@@ -14,36 +14,35 @@ public class EditCard extends Menu {
 	public EditCard(ArrayList<Card> pokedeck, String name) {
 		this.pokedeck = pokedeck;
 		this.cardName = name;
-		Card c = null;
-		for(int i = 0; i<pokedeck.size(); i++) {
-			c = pokedeck.get(i);
+		Card c = new Card();
+		for(int i = 0; i<this.pokedeck.size(); i++) {
+			c = this.pokedeck.get(i);
+			System.out.println(i);
 			if(c.getName().equals(name)) {
-				break;
+				i=this.pokedeck.size();
 			}
 			System.out.println(pokedeck);
 		}
-		if(c == null) {
-			
-		}
-		else {
-			this.panel = new JPanel();
-			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			this.setTitle("Edit " + c.getName());
-			but.addActionListener(new ButtonListener());
-			//JTextField nameText = new JTextField(c.getName());
-			this.nameText.setText(c.getName());
-			this.descriptionText.setText(c.getDescription());
-			//JTextField descriptionText = new JTextField(c.getDescription());
-			//JTextField idText = new JTextField(c.getID());
-			this.panel.add(descriptionText);
-			this.panel.add(nameText);
-			//this.panel.add(idText);
-			this.panel.add(but);
-			this.setLocationRelativeTo(null);
-			this.setLayout(new BorderLayout());
-			this.setContentPane(this.panel);
-			this.setVisible(true);
-		}
+		this.panel = new JPanel();
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setTitle("Edit " + c.getName());
+		this.setSize(240, 300);
+		but.addActionListener(new ButtonListener());
+		//JTextField nameText = new JTextField(c.getName());
+		this.nameText.setText(c.getName());
+		this.descriptionText.setText(c.getDescription());
+		//this.idText.setText(c.getId());
+		//JTextField descriptionText = new JTextField(c.getDescription());
+		//JTextField idText = new JTextField(c.getID());
+		this.panel.add(nameText);
+		this.panel.add(descriptionText);
+		//this.panel.add(idText);
+		this.panel.add(but);
+		this.setLocationRelativeTo(null);
+		this.setLayout(new BorderLayout());
+		this.setContentPane(this.panel);
+		this.setVisible(true);
+
 	}
 	
 	class ButtonListener implements ActionListener {
@@ -62,8 +61,9 @@ public class EditCard extends Menu {
 				}
 			}
 			System.out.println(c);
-			pokedeck.add(c);
 			System.out.println(pokedeck);
+			setVisible(false);
+			dispose();
 		}
 	}
 	
