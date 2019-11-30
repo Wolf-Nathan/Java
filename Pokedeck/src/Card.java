@@ -36,7 +36,7 @@ public class Card {
 	}
 	
 	public String toString() {
-		return this.name +" "+ this.description + " ID :" + this.id;
+		return this.name +" "+ this.description + " ID :" + this.getIDToString();
 	}
 	
 	public void setId(int id) {
@@ -45,6 +45,13 @@ public class Card {
 	
 	public int getID() {
 		return this.id;
+	}
+	
+	public String getIDToString() {
+		if(this.id != 0) {
+			return String.valueOf(this.id);
+		}
+		return "";
 	}
 
 }
