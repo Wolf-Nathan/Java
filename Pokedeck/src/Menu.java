@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Menu extends JFrame{
 
 	protected JPanel panel = new JPanel();
-	private static String buttons[] = {"New Card", "Edit Card", "Remove Card"};
+	private static String buttons[] = {"New Card", "Edit Card", "Remove Card", "Show Collection"};
 	protected ArrayList<Card> pokedeck;
 	
 	public Menu() {}
@@ -16,9 +16,6 @@ public class Menu extends JFrame{
 		this.setTitle("Menu");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		/*this.panel.add(new JButton("New Card"));
-		this.panel.add(new JButton("Edit Card"));
-		this.panel.add(new JButton("Remove Card"));*/
 		for(int i=0; i<buttons.length; i++) {
 			JButton but = new JButton(buttons[i]);
 			but.addActionListener(new ButtonListener());
@@ -39,6 +36,9 @@ public class Menu extends JFrame{
 			}
 			else if(((JButton) e.getSource()).getText()=="Edit Card") {
 				MenuEditCard menuEditCard = new MenuEditCard(pokedeck);
+			}
+			else if(((JButton) e.getSource()).getText()=="Show Collection") {
+				ShowCollection showCollection = new ShowCollection(pokedeck);
 			}
 	        else {
 	            System.out.println(((JButton) e.getSource()).getText());
