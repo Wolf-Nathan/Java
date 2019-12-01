@@ -6,19 +6,19 @@ import java.util.ArrayList;
 public class ShowCollection extends Menu {
 	private JRadioButton searchByName = new JRadioButton("Name");
 	private JRadioButton searchById = new JRadioButton("ID");
-	private JTextField search = new JTextField("    ");
+	private JTextField search = new JTextField("");
 	
 	public ShowCollection() {}
 	
 	public ShowCollection(ArrayList<Card> pokedeck) {
 		this.pokedeck = pokedeck;
 		this.setLayout(new FlowLayout());
-		this.panel = new JPanel();
+		this.panel = new JPanel(new GridLayout(2, 4));
 		this.panel.setLayout(new FlowLayout());
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(200, 300);
 		this.setTitle("My Pokedeck");
-		this.search.setSize(15, 10);
+		this.search.setPreferredSize(new Dimension(45, 20));
 		this.searchByName.setSelected(true);
 		ButtonGroup radioGroup = new ButtonGroup();
 		radioGroup.add(this.searchByName);
@@ -48,7 +48,7 @@ public class ShowCollection extends Menu {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(200, 300);
 		this.setTitle("My Pokedeck");
-		this.search.setSize(15, 10);
+		this.search.setPreferredSize(new Dimension(45, 20));
 		this.searchByName.setSelected(true);
 		ButtonGroup radioGroup = new ButtonGroup();
 		radioGroup.add(this.searchByName);
@@ -62,7 +62,7 @@ public class ShowCollection extends Menu {
 		if(searchType == 1) {
 			for(int i=0; i<this.pokedeck.size(); i++) {
 				Card c = this.pokedeck.get(i);
-				if(c.getIDToString().equals(elementSearch)) {
+				if(c.getIDToString().contains(elementSearch)) {
 					JLabel cardLabel = new JLabel(c.getName()+" "+c.getDescription()+" "+c.getIDToString());
 					this.panel.add(cardLabel);
 				}
@@ -71,7 +71,7 @@ public class ShowCollection extends Menu {
 		else if(searchType == 2) {
 			for(int i=0; i<this.pokedeck.size(); i++) {
 				Card c = this.pokedeck.get(i);
-				if(c.getName().equals(elementSearch)) {
+				if(c.getName().contains(elementSearch)) {
 					JLabel cardLabel = new JLabel(c.getName()+" "+c.getDescription()+" "+c.getIDToString());
 					this.panel.add(cardLabel);
 				}
