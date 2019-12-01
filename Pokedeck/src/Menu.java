@@ -2,12 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.Serializable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Menu extends JFrame implements Serializable{
 
 	protected JPanel panel = new JPanel();
-	private static String buttons[] = {"New Card", "Edit Card", "Remove Card", "Show Collection"};
+	private static String buttons[] = {"New Card", "Edit Card", "Remove Card", "Show Collection", "Save Pokedeck", "Load Pokedeck"};
 	protected ArrayList<Card> pokedeck;
 	
 	public Menu() {}
@@ -40,6 +47,67 @@ public class Menu extends JFrame implements Serializable{
 			}
 			else if(((JButton) e.getSource()).getText()=="Show Collection") {
 				ShowCollection showCollection = new ShowCollection(pokedeck);
+			}
+			else if (((JButton) e.getSource()).getText()=="Save Pokedeck") {
+				try {
+					FileOutputStream fos = new FileOutputStream("pokedeck.serial");
+					try {
+						ObjectOutputStream oos = new ObjectOutputStream(fos);
+						try {
+							oos.writeObject(pokedeck);
+							oos.flush();
+							JLabel saveMessage = new JLabel("Your pokedeck is save.");
+							JOptionPane.showMessageDialog(null, saveMessage);
+						}finally {
+							try {
+			                    oos.close();
+			                } finally {
+			                    fos.close();
+			                }
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			else if (((JButton) e.getSource()).getText()=="Load Pokedeck") {
+				File f = new File("pokedeck.serial");
+				if(f.isFile()) {
+					try {
+						FileInputStream fis = new FileInputStream("pokedeck.serial");
+						ObjectInputStream ois = new ObjectInputStream(fis);
+						try {    
+			                pokedeck = (ArrayList<Card>) ois.readObject(); 
+			            } catch (ClassNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} finally {
+			                try {
+			                    ois.close();
+			                } finally {
+			                    fis.close();
+			                }
+			            }
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					if(pokedeck != null) {
+						JLabel loadMessage = new JLabel("Load pokedeck success.");
+						JOptionPane.showMessageDialog(null, loadMessage);
+					}
+				}
+				else {
+					JLabel noLoadMessage = new JLabel("No pokedeck data was find :/");
+					JOptionPane.showMessageDialog(null, noLoadMessage);
+				}
 			}
 	        else {
 	            System.out.println(((JButton) e.getSource()).getText());
