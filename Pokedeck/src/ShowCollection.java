@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ShowCollection extends Menu {
 	private JRadioButton searchByName = new JRadioButton("Name");
 	private JRadioButton searchById = new JRadioButton("ID");
-	private JTextField search = new JTextField();
+	private JTextField search = new JTextField("    ");
 	
 	public ShowCollection() {}
 	
@@ -19,6 +19,7 @@ public class ShowCollection extends Menu {
 		this.setSize(200, 300);
 		this.setTitle("My Pokedeck");
 		this.search.setSize(15, 10);
+		this.searchByName.setSelected(true);
 		ButtonGroup radioGroup = new ButtonGroup();
 		radioGroup.add(this.searchByName);
 		radioGroup.add(this.searchById);
@@ -48,6 +49,7 @@ public class ShowCollection extends Menu {
 		this.setSize(200, 300);
 		this.setTitle("My Pokedeck");
 		this.search.setSize(15, 10);
+		this.searchByName.setSelected(true);
 		ButtonGroup radioGroup = new ButtonGroup();
 		radioGroup.add(this.searchByName);
 		radioGroup.add(this.searchById);
