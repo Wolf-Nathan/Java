@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Menu extends JFrame{
+public class Menu extends JFrame implements Serializable{
 
 	protected JPanel panel = new JPanel();
 	private static String buttons[] = {"New Card", "Edit Card", "Remove Card", "Show Collection"};
