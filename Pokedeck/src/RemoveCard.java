@@ -11,27 +11,19 @@ public class RemoveCard extends Menu {
 	
 	public RemoveCard(ArrayList<Card> pokedeck) {
 		this.panel = new JPanel();
-		this.panel2 = new JPanel(new FlowLayout());
-		this.panel3 = new JPanel(new FlowLayout());
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.pokedeck = pokedeck;
-		this.setSize(200, 300);
-		//this.setResizable(false);
+		this.setSize(300, 300);
 		this.setTitle("Remove Card");
 		for(int i=0; i<this.pokedeck.size(); i++) {
 			Card c = this.pokedeck.get(i);
-			JLabel cardName = new JLabel(c.getName());
-			JButton but = new JButton("Remove "+ c.getName());
+			JButton but = new JButton("Remove "+ c.getName() +" - " +  c.getIDToString());
 			but.addActionListener(new ButtonListener());
-			cardName.setSize(100, 30);
 			but.setSize(100, 30);
-			this.panel2.add(cardName);
-			this.panel3.add(but);
+			this.panel.add(but);
 		}
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
-		this.panel.add(panel2);
-		this.panel.add(panel3);
 		this.setContentPane(this.panel);
 		this.setVisible(true);
 	}
@@ -42,6 +34,8 @@ public class RemoveCard extends Menu {
 			String buttonName = ((JButton)e.getSource()).getText();
 			String del = "Remove ";
 			String name = buttonName.replace(del, "");
+			String split[] = name.split(" -", 2);
+			name = split[0];
 			System.out.println(name);
 			for(int i = 0; i<pokedeck.size(); i++) {
 				Card c = pokedeck.get(i);
@@ -52,6 +46,9 @@ public class RemoveCard extends Menu {
 				System.out.println(pokedeck);
 			}
 			pokedeck.remove(name);
+			RemoveCard removeCard = new RemoveCard(pokedeck);
+			setVisible(false);
+			dispose();
 			
 		}
 	}
