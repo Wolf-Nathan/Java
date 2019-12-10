@@ -12,11 +12,12 @@ public class ShowCollection extends Menu {
 	
 	public ShowCollection(ArrayList<Card> pokedeck) {
 		this.pokedeck = pokedeck;
-		this.setLayout(new FlowLayout());
-		this.panel = new JPanel(new GridLayout(2, 4));
-		this.panel.setLayout(new FlowLayout());
+		this.setLayout(new BorderLayout());
+		this.panel = new JPanel();
+		JPanel panel2 = new JPanel(new FlowLayout());
+		//this.panel.setLayout(new FlowLayout());
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setSize(200, 300);
+		this.setSize(300, 300);
 		this.setTitle("My Pokedeck");
 		this.search.setPreferredSize(new Dimension(45, 20));
 		this.searchByName.setSelected(true);
@@ -32,11 +33,14 @@ public class ShowCollection extends Menu {
 		for(int i=0; i<this.pokedeck.size(); i++) {
 			Card c = this.pokedeck.get(i);
 			JLabel cardLabel = new JLabel(c.getName()+" "+c.getDescription()+" "+c.getIDToString());
-			this.panel.add(cardLabel);
+			panel2.add(cardLabel);
 		}
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
-		this.setContentPane(this.panel);
+		//this.setContentPane(this.panel);
+		this.add(this.panel, BorderLayout.NORTH);
+		this.add(panel2, BorderLayout.CENTER);
+		
 		this.setVisible(true);
 	}
 	
@@ -46,10 +50,9 @@ public class ShowCollection extends Menu {
 		this.panel = new JPanel();
 		this.panel.setLayout(new FlowLayout());
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setSize(200, 300);
+		this.setSize(300, 300);
 		this.setTitle("My Pokedeck");
 		this.search.setPreferredSize(new Dimension(45, 20));
-		this.searchByName.setSelected(true);
 		ButtonGroup radioGroup = new ButtonGroup();
 		radioGroup.add(this.searchByName);
 		radioGroup.add(this.searchById);
@@ -60,6 +63,7 @@ public class ShowCollection extends Menu {
 		this.panel.add(research);
 		research.addActionListener(new ButtonListener());
 		if(searchType == 1) {
+			this.searchById.setSelected(true);
 			for(int i=0; i<this.pokedeck.size(); i++) {
 				Card c = this.pokedeck.get(i);
 				if(c.getIDToString().contains(elementSearch)) {
@@ -69,6 +73,7 @@ public class ShowCollection extends Menu {
 			}
 		}
 		else if(searchType == 2) {
+			this.searchByName.setSelected(true);
 			for(int i=0; i<this.pokedeck.size(); i++) {
 				Card c = this.pokedeck.get(i);
 				if(c.getName().contains(elementSearch)) {
