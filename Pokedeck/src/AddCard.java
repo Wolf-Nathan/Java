@@ -7,7 +7,11 @@ public class AddCard extends Menu {
 
 	private JTextField nameText = new JTextField("Card name");
 	private JTextField descriptionText = new JTextField("Card description");
-	private JTextField idText = new JTextField("Card ID");
+	private static String types[] = {
+			"Steel", "Fighting", "Dragon", "Water", "Bug", "Dark", "Electric", "Fairy", "Fire", "Flying", 
+			"Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock"
+			};
+	private JComboBox typeList = new JComboBox(types);
 	
 	public AddCard() {}
 	
@@ -19,7 +23,7 @@ public class AddCard extends Menu {
 		this.setLocationRelativeTo(null);
 		this.panel.add(this.nameText);
 		this.panel.add(this.descriptionText);
-		//this.panel.add(this.idText);
+		this.panel.add(this.typeList);
 		JButton but = new JButton("Add this card");
 		but.addActionListener(new ButtonListener());
 		this.panel.add(but);
@@ -32,7 +36,7 @@ public class AddCard extends Menu {
 		public void actionPerformed(ActionEvent e) {
 			String name = nameText.getText();
 			String description = descriptionText.getText();
-			//int id = Integer.parseInt(idText.getText());
+			String type = typeList.getSelectedItem().toString();
 			int id = 0;
 			boolean test = false;
 			boolean test2 = true;
@@ -52,7 +56,7 @@ public class AddCard extends Menu {
 				}
 			}while(!test);
 			
-			Card c = new Card(name, description, id);
+			Card c = new Card(name, description, id, type);
 			System.out.println(c);
 			pokedeck.add(c);
 			System.out.println(pokedeck);

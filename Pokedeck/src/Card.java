@@ -3,6 +3,7 @@ import java.io.Serializable;
 public class Card implements Serializable{
 	private String name;
 	private String description;
+	private String type;
 	private int id;
 	private static final long serialVersionUID = 42L;
 	
@@ -19,6 +20,13 @@ public class Card implements Serializable{
 		this.name = name;
 		this.description = description;
 		this.id =id;
+	}
+	
+	public Card(String name, String description, int id, String type) {
+		this.name = name;
+		this.description = description;
+		this.id =id;
+		this.type = type;
 	}
 	
 	public String getDescription() {
@@ -38,7 +46,7 @@ public class Card implements Serializable{
 	}
 	
 	public String toString() {
-		return this.name +" "+ this.description + " ID :" + this.getIDToString();
+		return this.name +" "+ this.description + " ID :" + this.getIDToString() + " Type :" + this.getType();
 	}
 	
 	public void setId(int id) {
@@ -54,6 +62,14 @@ public class Card implements Serializable{
 			return String.valueOf(this.id);
 		}
 		return "";
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

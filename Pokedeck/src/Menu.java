@@ -20,13 +20,16 @@ public class Menu extends JFrame implements Serializable{
 	public Menu() {}
 	
 	public Menu(ArrayList<Card> pokedeck) {
-		this.setSize(240, 260);
+		this.setSize(240, 310);
 		this.setTitle("Menu");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.panel.add(new JLabel("Welcome to Pokedeck !"));
 		for(int i=0; i<buttons.length; i++) {
 			JButton but = new JButton(buttons[i]);
 			but.addActionListener(new ButtonListener());
+			but.setPreferredSize(new Dimension(150,35));
 			this.panel.add(but);
 		}
 		this.setContentPane(panel);

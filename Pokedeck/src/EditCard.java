@@ -9,6 +9,7 @@ public class EditCard extends Menu {
 	private JTextField descriptionText = new JTextField();
 	private String cardName;
 	private int cardId;
+	private String cardType;
 	
 	public EditCard() {}
 	
@@ -25,6 +26,7 @@ public class EditCard extends Menu {
 			System.out.println(pokedeck);
 		}
 		this.cardId = c.getID();
+		this.cardType = c.getType();
 		this.panel = new JPanel();
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("Edit " + c.getName());
@@ -47,7 +49,7 @@ public class EditCard extends Menu {
 		public void actionPerformed (ActionEvent e) {
 			String name = nameText.getText();
 			String description = descriptionText.getText();
-			Card c = new Card(name, description, cardId);
+			Card c = new Card(name, description, cardId, cardType);
 			for(int i=0; i<pokedeck.size(); i++) {
 				Card temp = pokedeck.get(i);
 				if(temp.getName().equals(cardName)) {
