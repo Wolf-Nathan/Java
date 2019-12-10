@@ -37,6 +37,7 @@ public class AddCard extends Menu {
 			String name = nameText.getText();
 			String description = descriptionText.getText();
 			String type = typeList.getSelectedItem().toString();
+			int hp = 30 + (int)(Math.random() * (200 - 30));
 			int id = 0;
 			boolean test = false;
 			boolean test2 = true;
@@ -56,7 +57,7 @@ public class AddCard extends Menu {
 				}
 			}while(!test);
 			
-			Card c = new Card(name, description, id, type);
+			Card c = new Card(name, description, id, type, hp);
 			System.out.println(c);
 			pokedeck.add(c);
 			System.out.println(pokedeck);
