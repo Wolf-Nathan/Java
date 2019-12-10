@@ -17,18 +17,13 @@ public class MenuEditCard extends Menu {
 		this.setSize(240, 300);
 		for(int i=0; i<this.pokedeck.size(); i++) {
 			Card c = this.pokedeck.get(i);
-			//JLabel cardName = new JLabel(c.getName());
-			JButton but = new JButton("Edit "+ c.getName());
+			JButton but = new JButton("Edit "+ c.getName()+ " - " + c.getIDToString());
 			but.addActionListener(new ButtonListener());
-			//cardName.setSize(100, 30);
 			but.setSize(100, 30);
-			//this.panel2.add(cardName);
 			this.panel.add(but);
 		}
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
-		//this.panel.add(panel2);
-		//this.panel.add(panel3);
 		this.setContentPane(this.panel);
 		this.setVisible(true);
 	}
@@ -39,6 +34,8 @@ public class MenuEditCard extends Menu {
 			String buttonName = ((JButton)e.getSource()).getText();
 			String del = "Edit ";
 			String name = buttonName.replace(del, "");
+			String split[] = name.split(" -", 2);
+			name = split[0];
 			System.out.println(name);
 			EditCard editCard = new EditCard(pokedeck, name);
 			setVisible(false);

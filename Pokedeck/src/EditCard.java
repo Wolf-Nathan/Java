@@ -8,6 +8,7 @@ public class EditCard extends Menu {
 	private JButton but = new JButton("Save");
 	private JTextField descriptionText = new JTextField();
 	private String cardName;
+	private int cardId;
 	
 	public EditCard() {}
 	
@@ -23,20 +24,16 @@ public class EditCard extends Menu {
 			}
 			System.out.println(pokedeck);
 		}
+		this.cardId = c.getID();
 		this.panel = new JPanel();
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("Edit " + c.getName());
 		this.setSize(240, 300);
 		but.addActionListener(new ButtonListener());
-		//JTextField nameText = new JTextField(c.getName());
 		this.nameText.setText(c.getName());
 		this.descriptionText.setText(c.getDescription());
-		//this.idText.setText(c.getId());
-		//JTextField descriptionText = new JTextField(c.getDescription());
-		//JTextField idText = new JTextField(c.getID());
 		this.panel.add(nameText);
 		this.panel.add(descriptionText);
-		//this.panel.add(idText);
 		this.panel.add(but);
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
@@ -50,8 +47,7 @@ public class EditCard extends Menu {
 		public void actionPerformed (ActionEvent e) {
 			String name = nameText.getText();
 			String description = descriptionText.getText();
-			// id = Integer.parseInt(idText.getText());
-			Card c = new Card(name, description);
+			Card c = new Card(name, description, cardId);
 			for(int i=0; i<pokedeck.size(); i++) {
 				Card temp = pokedeck.get(i);
 				if(temp.getName().equals(cardName)) {
