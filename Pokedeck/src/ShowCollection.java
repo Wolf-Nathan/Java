@@ -15,7 +15,6 @@ public class ShowCollection extends Menu {
 		this.setLayout(new BorderLayout());
 		this.panel = new JPanel();
 		JPanel panel2 = new JPanel(new FlowLayout());
-		//this.panel.setLayout(new FlowLayout());
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(300, 300);
 		this.setTitle("My Pokedeck");
@@ -37,18 +36,16 @@ public class ShowCollection extends Menu {
 		}
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
-		//this.setContentPane(this.panel);
 		this.add(this.panel, BorderLayout.NORTH);
-		this.add(panel2, BorderLayout.CENTER);
-		
+		this.add(panel2, BorderLayout.CENTER);		
 		this.setVisible(true);
 	}
 	
 	public ShowCollection(ArrayList<Card> pokedeck, String elementSearch, int searchType) {
 		this.pokedeck = pokedeck;
-		this.setLayout(new FlowLayout());
+		this.setLayout(new BorderLayout());
 		this.panel = new JPanel();
-		this.panel.setLayout(new FlowLayout());
+		JPanel panel2 = new JPanel(new FlowLayout());
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(300, 300);
 		this.setTitle("My Pokedeck");
@@ -68,7 +65,7 @@ public class ShowCollection extends Menu {
 				Card c = this.pokedeck.get(i);
 				if(c.getIDToString().contains(elementSearch)) {
 					JLabel cardLabel = new JLabel(c.getName()+" "+c.getDescription()+" "+c.getIDToString());
-					this.panel.add(cardLabel);
+					panel2.add(cardLabel);
 				}
 			}
 		}
@@ -78,13 +75,14 @@ public class ShowCollection extends Menu {
 				Card c = this.pokedeck.get(i);
 				if(c.getName().contains(elementSearch)) {
 					JLabel cardLabel = new JLabel(c.getName()+" "+c.getDescription()+" "+c.getIDToString());
-					this.panel.add(cardLabel);
+					panel2.add(cardLabel);
 				}
 			}
 		}
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
-		this.setContentPane(this.panel);
+		this.add(this.panel, BorderLayout.NORTH);
+		this.add(panel2, BorderLayout.CENTER);
 		this.setVisible(true);
 		
 	}
