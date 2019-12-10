@@ -14,14 +14,14 @@ public class EditCard extends Menu {
 	
 	public EditCard() {}
 	
-	public EditCard(ArrayList<Card> pokedeck, String name) {
+	public EditCard(ArrayList<Card> pokedeck, String name, String id) {
 		this.pokedeck = pokedeck;
 		this.cardName = name;
 		Card c = new Card();
 		for(int i = 0; i<this.pokedeck.size(); i++) {
 			c = this.pokedeck.get(i);
 			System.out.println(i);
-			if(c.getName().equals(name)) {
+			if(c.getName().equals(name) && c.getIDToString().equals(id)) {
 				i=this.pokedeck.size();
 			}
 			System.out.println(pokedeck);
@@ -54,7 +54,7 @@ public class EditCard extends Menu {
 			Card c = new Card(name, description, cardId, cardType, cardHP);
 			for(int i=0; i<pokedeck.size(); i++) {
 				Card temp = pokedeck.get(i);
-				if(temp.getName().equals(cardName)) {
+				if(temp.getName().equals(cardName) && temp.getID() == cardId) {
 					pokedeck.remove(i);
 					pokedeck.add(c);
 					break;

@@ -34,10 +34,11 @@ public class MenuEditCard extends Menu {
 			String buttonName = ((JButton)e.getSource()).getText();
 			String del = "Edit ";
 			String name = buttonName.replace(del, "");
-			String split[] = name.split(" -", 2);
+			String split[] = name.split(" - ", 2);
 			name = split[0];
+			String id = split[1];
 			System.out.println(name);
-			EditCard editCard = new EditCard(pokedeck, name);
+			EditCard editCard = new EditCard(pokedeck, name, id);
 			setVisible(false);
 			dispose();
 			
