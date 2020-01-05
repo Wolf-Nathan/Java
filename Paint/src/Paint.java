@@ -24,6 +24,7 @@ public class Paint extends JFrame{
   private JMenu apropos;
   private JMenuItem annuler;
   private JMenuItem supprimerTout;
+  private JMenuItem fond;
   private JMenuItem quitter;
 
  // Attribut concernant la Section nord
@@ -50,6 +51,7 @@ public class Paint extends JFrame{
   private JButton cancel;
   private JButton alignH;
   private JButton alignV;
+  private JButton background;
   
 // Attribut d'evenement
   
@@ -61,6 +63,7 @@ public class Paint extends JFrame{
   public Paint(){
     super("Paint");
     this.setSize(1000, 800);
+    this.setLocationRelativeTo(null);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.initialise();
     this.setVisible(true);
@@ -80,20 +83,24 @@ public class Paint extends JFrame{
     this.apropos = new JMenu("A propos");
     this.annuler = new JMenuItem("Annuler");
     this.supprimerTout = new JMenuItem("Supprimer tout");
+    this.fond = new JMenuItem("Couleur d'arrière-plan");
     this.quitter = new JMenuItem("Quitter");
  
     //this.sauver.addActionListener(this.e);
     this.annuler.addActionListener(e);
     this.supprimerTout.addActionListener(e);
+    this.fond.addActionListener(e);
     this.quitter.addActionListener(this.e);
     this.apropos.addMenuListener(this.e);
     
     annuler.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,InputEvent.CTRL_MASK));
     supprimerTout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,InputEvent.CTRL_MASK));
+    fond.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A,InputEvent.CTRL_MASK));
     quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_MASK));
  
     this.file.add(this.annuler);
     this.file.add(this.supprimerTout);
+    this.file.add(this.fond);
     this.file.add(this.quitter);
     this.menu.add(this.file);
     this.menu.add(this.apropos);
@@ -150,19 +157,23 @@ public class Paint extends JFrame{
     this.cancel = new JButton("Revenir en arrière");
     this.alignV = new JButton("Alignement vertical");
     this.alignH = new JButton("Alignement horizontal");
+    this.background = new JButton("Arrière-plan");
     
     this.deleteAll.addActionListener(e);
     this.cancel.addActionListener(e);
     this.alignH.addActionListener(e);
     this.alignV.addActionListener(e);
+    this.background.addActionListener(e);
     
     this.deleteAll.setMnemonic(KeyEvent.VK_D);
     this.cancel.setMnemonic(KeyEvent.VK_Z);
+    this.background.setMnemonic(KeyEvent.VK_A);
  
     this.sud.add(this.deleteAll);
     this.sud.add(this.cancel);
     this.sud.add(this.alignH);
     this.sud.add(this.alignV);
+    this.sud.add(this.background);
  
     this.add(this.sud, BorderLayout.SOUTH);
   }
@@ -274,6 +285,25 @@ public class Paint extends JFrame{
 	        for(Dessin d: Donnees.listeD){
 	          d.setX(x- (d.getTaille()/2));
 	        }
+	      }
+	      
+	      //Change la couleur du fond
+	      if(src == background || src.equals(fond)) {
+	    	  String c = (String)listCouleur.getSelectedItem();
+	    	  Color couleur1;
+	    	  if(c.equals("rouge")) couleur1 = Color.red;
+	    	    else if(c.equals("blanc")) couleur1 = Color.white;
+	    	    else if(c.equals("bleu")) couleur1 = Color.blue;
+	    	    else if(c.contentEquals("vert")) couleur1 = Color.green;
+	    	    else if(c.equals("noir")) couleur1 = Color.black;
+	    	    else if(c.contentEquals("violet")) couleur1 = Color.magenta;
+	    	    else if(c.contentEquals("orange")) couleur1 = Color.orange;
+	    	    else if(c.contentEquals("rose")) couleur1 = Color.pink;
+	    	    else if(c.contentEquals("jaune")) couleur1 = Color.yellow;
+	    	    else if(c.contentEquals("cyan")) couleur1 = Color.CYAN;
+	    	    else if(c.contentEquals("gris")) couleur1 = Color.gray;
+	    	    else couleur1 = Color.white;
+	    	  centre.setBackground(couleur1);
 	      }
 	      centre.repaint();
 	    }
