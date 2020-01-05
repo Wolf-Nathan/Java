@@ -20,6 +20,11 @@ public class Dessin{
     else if(c.contentEquals("vert")) couleur1 = Color.green;
     else if(c.equals("noir")) couleur1 = Color.black;
     else if(c.contentEquals("violet")) couleur1 = Color.magenta;
+    else if(c.contentEquals("orange")) couleur1 = Color.orange;
+    else if(c.contentEquals("rose")) couleur1 = Color.pink;
+    else if(c.contentEquals("jaune")) couleur1 = Color.yellow;
+    else if(c.contentEquals("cyan")) couleur1 = Color.CYAN;
+    else if(c.contentEquals("gris")) couleur1 = Color.gray;
     else couleur1 = Color.green;
     this.couleur = couleur1;
  
